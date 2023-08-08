@@ -1,1 +1,51 @@
-<p>login-page works!</p>
+<div class="lg:grid grid-cols-2  h-screen lg:mx-32  lg:my-0">
+  <div class="lg:block hidden lg:mt-8">
+    <div class="relative">
+      <img src="../../../assets/images/Login01.gif" alt="Background" class="w-full mt-5" />
+    </div>
+  </div>
+  <div class="lg:border  border-slate-400 rounded lg:m-12 p-8 border m-12">
+    <div class="flex justify-center mt-8">
+      <app-logo></app-logo>
+    </div>
+    <h1 class="text-sm font-bold text-slate-600 text-center mb-5">
+      Ready to take your project management to the next level
+      <span class="text-orange-600">Log in to FUSE</span> and explore
+      our latest features
+    </h1>
+    <div class="text-center md:flex  justify-center  items-center ">
+      <app-button
+        design="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+        text="Sign in with Google">
+      </app-button>
+    </div>
+    <div class="flex">
+      <hr class="w-96 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+      <p class="mt-5 mx-5">OR</p>
+      <hr class="w-96 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+    </div>
+    <form>
+      <div class="grid gap-1 lg:mt-5">
+        <input type="email | mobile" placeholder="Email or mobile Number" name="credential"
+          class="placeholder:font-bold bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " />
+        <p class="text-red-600 h-6 ">hai</p>
+        <input type="password" placeholder="Password" name="pword"
+          class="placeholder:font-bold bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+          value='' />
+        <p class="text-red-600 h-6">j</p>
+      </div>
+      <div class="text-center mt-4 -mb-5">
+        <app-button
+          design="text-white md:px-12  bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          text="Login">
+        </app-button>
+      </div>
+    </form>
+    <div class="flex justify-end  lg:mt-12 mt-20 ">
+      <h1 class="text-lg lg:font-bold cursor-help">NEW TO FUSE ?</h1>
+      <a routerLink="/register" class="text-xl ml-2 text-blue-400 font-bold hover:text-orange-600">
+        REGISTER
+      </a>
+    </div>
+  </div>
+</div>
