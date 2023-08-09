@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginErrorInterface, LoginInterface } from 'src/app/config/config.types';
+import { LoginErrorInterface, LoginDetailsInterface } from 'src/app/config/config.types';
 import { LoginPageService } from './login-page.service';
 import { FirebaseService } from 'src/app/shared/services/Firebase/firebase.service';
 import { ToastService } from 'src/app/shared/services/NgToast/toast.service';
@@ -15,7 +15,7 @@ export class LoginPageComponent {
               private firebaseService:FirebaseService,
               private toastService:ToastService) { }
   
-  details:LoginInterface = {
+  details:LoginDetailsInterface = {
     credential:'',
     pword:''
   }
@@ -49,7 +49,11 @@ export class LoginPageComponent {
   onSubmit() {
     if((!this.error.credentialError&& !this.error.pwordError )&& (this.details.credential && this.details.pword)){
       this.loginService.login(this.details).subscribe((response)=>{
-        this.toastService.showSuccess("User succesfully Logged In")
+        if(response.response.isVerified){
+          this.toastService.showSuccess("User succesfully Logged In");
+        }else{
+          this.toastService.showError("Please verify from the registered e-mail","User Not registered")
+        }
         console.log(response);
       },err => {
         console.log({LoginError:err});
