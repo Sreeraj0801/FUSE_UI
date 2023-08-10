@@ -8,13 +8,13 @@ import { authResponse } from 'src/app/config/config.types';
 })
 export class LoginPageService {
 
-  constructor(private http:HttpClient) { }
-  login(details:any){
-  return this.http.post<authResponse>(environmet.baseUrl+'login',details)
+constructor(private http:HttpClient) { }
+login(details:any){
+return this.http.post<authResponse>(environmet.baseUrl+'login',details)
 }
 
 googleLogin(email:string){;
-  return this.http.post<any>(environmet.baseUrl + 'googleSignIn',{email})
+  return this.http.post<authResponse>(environmet.baseUrl + 'googleSignIn',{email})
 } 
 
 }
