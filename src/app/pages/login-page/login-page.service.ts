@@ -13,9 +13,8 @@ export class LoginPageService {
   return this.http.post<authResponse>(environmet.baseUrl+'login',details)
 }
 
-googleLogin(email:string){
-  return this.http.post<authResponse>(environmet.baseUrl + 'googleSignIn',{email})
-}
-
+googleLogin(email:string){;
+  return this.http.post<any>(environmet.baseUrl + 'googleSignIn',{email})
+} 
 
 }
