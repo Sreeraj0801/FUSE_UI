@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { environment } from 'src/environment/environment';
+import { environmet } from 'src/environment/environment';
 const {
   firebaseEnv: {
     FR_API_KEY,
@@ -13,7 +13,7 @@ const {
     FR_MESSAGING_SENDER_ID,
     FR_STORAGE_BUCKET,
   }
-} = environment;
+} = environmet;
 const firebaseConfig = {
   apiKey: FR_API_KEY,
   authDomain: FR_AUTH_DOMAIN,

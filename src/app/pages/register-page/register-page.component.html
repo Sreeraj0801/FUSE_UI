@@ -1,0 +1,74 @@
+<div class="lg:grid grid-cols-2 max-h-screen lg:mx-24">
+    <div class="lg:block hidden lg:mt-8">
+        <div class="relative">
+            <div
+                class="bg-gradient-to-r from-blue-900 to-slate-900 absolute rounded p-5 flex -right-3 bottom-40 text-white hover:scale-110 transition-all duration-500 cursor-pointer ">
+                <p class="text-xl">Already an user ? </p>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a routerLink="/login" class="text-2xl -mt-1  cursor-pointer hover:text-yellow-400">
+                    LOGIN
+                </a>
+            </div>
+            <img src="../../../assets/images/Register04.gif" alt="Background" class="w-full mt-5" />
+        </div>
+    </div>
+    <div class="border border-slate-400 rounded lg:m-12 px-5  m-5 md:m-20">
+        <div class="flex justify-center lg:mt-2">
+            <app-logo></app-logo>
+        </div>
+        <h1 class="text-sm font-bold text-slate-600 text-center mb-5">
+            Join FUSE today and start managing your projects effortlessly.
+        </h1>
+        <div class="text-center">
+            <app-button
+                design="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
+                text="Sign Up with Google"
+                 (btnClick)="handleGoogleSignIn()">
+            </app-button>
+        </div>
+        <div class="flex mb-2">
+            <hr class="w-96 h-px my-5  border-0 bg-gray-700" />
+            <p class="mt-2 mx-5">OR</p>
+            <hr class="w-96 h-px my-5 border-0 bg-gray-700" />
+        </div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="grid gap-1">
+                <input type="text" name="name" placeholder="Enter your full name" [(ngModel)]="details.name"
+                    (ngModelChange)="handleValidation('name')"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                <p class="text-red-600 h-6">{{error.nameError}}</p>
+
+                <input name="email" type="email" placeholder="Email" [(ngModel)]="details.email"
+                    (ngModelChange)="handleValidation('email')"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                <p class="text-red-600 h-6">{{error.emailError}}</p>
+                <input type="tel" name="mobile" placeholder="mobile" [(ngModel)]="details.mobile"
+                    (ngModelChange)="handleValidation('mobile')"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                <p class="text-red-600 h-6">{{error.mobileError}}</p>
+                <input name="pword" type="password" placeholder="Password" [(ngModel)]="details.pword"
+                    (ngModelChange)="handleValidation('pword')"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                <p class="text-red-600 h-6">{{error.pwordError}}</p>
+                <input name="confirmPword" type="password" placeholder="confirm password"
+                    [(ngModel)]="details.confirmPword" (ngModelChange)="handleValidation('confirmPwrd')"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                <p class="text-red-600 h-6">{{error.confirmPwordError}}</p>
+            </div>
+            <div class="text-center mt-2 -mb-5">
+                <app-button
+                    design="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 md:px-12"
+                    text="Register">
+                </app-button>
+            </div>
+        </form>
+        <div class=" mx- mt-8  lg:hidden">
+            <h1 class="text-sm">Already An User ?
+                <a href="/login" class="text-lg  text-blue-400 font-bold">
+                    LOGIN
+                </a>
+            </h1>
+
+        </div>
+    </div>
+</div>
