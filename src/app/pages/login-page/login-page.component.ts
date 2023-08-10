@@ -50,7 +50,6 @@ export class LoginPageComponent {
     if((!this.error.credentialError&& !this.error.pwordError )&& (this.details.credential && this.details.pword)){
       this.loginService.login(this.details).subscribe((response)=>{
         if(response.response.isVerified){
-
           this.toastService.showSuccess("User succesfully Logged In")
         }else{this.toastService.showError("Please verify your email")}
         console.log(response);
