@@ -24,7 +24,7 @@ export class RegisterService {
     .pipe(
       catchError((error) => {
         console.error('GoogleRegistration:', error);
-        throw ('Something went wrong. Please try again later.');
+        throw (error.error.error.msg || 'Something went wrong. Please try again later.');
       })
     );
   }

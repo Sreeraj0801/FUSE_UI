@@ -121,7 +121,6 @@ export class RegisterPageComponent {
   //handle Google SignIn
   async handleGoogleSignIn() {
     const userDetails = await this.firebaseService.loginWithGoogle();
-    console.log(userDetails);
     const {
       user: { displayName, email },
     } = userDetails;
@@ -131,8 +130,8 @@ export class RegisterPageComponent {
         console.log(response);
       },
       (err) => {
-        console.log({googleRegistrationError:err});
-        this.toastService.showError(
+        console.log({googleRegistrationError:err})
+        this.toastService.showError(err||
           err.error.error.msg ||err.error.error.error.message ||
           'Google Registration failed'
         );
