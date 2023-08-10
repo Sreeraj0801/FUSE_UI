@@ -1,7 +1,8 @@
 
 export const environmet = {
   production: false,
-  baseUrl: 'https://fuse-official.online/server/',
+  // baseUrl: 'https://fuse-official.online/server/',
+  baseUrl:'http://localhost:3000/server/',
   firebaseEnv: {
     FR_API_KEY: 'AIzaSyBZC2sMWXB6QMq0LmyiDjm2hfnbweWOirY',
     FR_AUTH_DOMAIN: 'fuse-a2ec3.firebaseapp.com',

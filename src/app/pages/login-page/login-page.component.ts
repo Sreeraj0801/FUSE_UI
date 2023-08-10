@@ -49,7 +49,9 @@ export class LoginPageComponent {
   onSubmit() {
     if((!this.error.credentialError&& !this.error.pwordError )&& (this.details.credential && this.details.pword)){
       this.loginService.login(this.details).subscribe((response)=>{
-        this.toastService.showSuccess("User succesfully Logged In")
+        if(response.response.isVerified){
+          this.toastService.showSuccess("User succesfully Logged In")
+        }else{this.toastService.showError("Please verify your email")}
         console.log(response);
       },err => {
         console.log({LoginError:err});
@@ -70,7 +72,8 @@ export class LoginPageComponent {
           },err => {this.toastService.showError(err.error.error.msg || "user Login Error")}
           )
         }
-      } catch (error) {
+      } catch (error:any) {
+        this.toastService.showError(error.error || "Error");
         console.error({signInWithGoogeError:error});
       }
     }
