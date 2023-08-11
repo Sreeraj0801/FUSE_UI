@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { RegisterDetailInterface, authResponse } from 'src/app/config/config.types';
 import { environmet } from 'src/environment/environment';
-import { catchError, throwError } from 'rxjs';
+import { catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })

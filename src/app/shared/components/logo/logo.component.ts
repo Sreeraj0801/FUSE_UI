@@ -7,4 +7,5 @@ import { Component,Input } from '@angular/core';
 })
 export class LogoComponent {
 @Input() design?:string;
+@Input() theme:boolean = false;
 }
