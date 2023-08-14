@@ -8,7 +8,7 @@ import { RegisterService } from './register.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
-const route:Routes = ([{path:'',component:RegisterPageComponent,title:'FUSE | Verify'}]);
+const route:Routes = ([{path:'',component:RegisterPageComponent,title:'FUSE | Register'}]);
 
 @NgModule({
   declarations: [RegisterPageComponent],

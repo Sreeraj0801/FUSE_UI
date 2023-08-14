@@ -44,8 +44,5 @@ Thumbs.db
 #environment
 environment
 /src/environment/
-<<<<<<< HEAD
- 
-=======
+src/environment/environment
 
->>>>>>> main

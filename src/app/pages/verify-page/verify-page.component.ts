@@ -14,7 +14,7 @@ export class VerifyPageComponent implements OnInit {
   paramasId: string   = '';
   paramsToken: string = '';
   resend:boolean = false;
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute, 
               private verifyPageSerice:VerifyPageService,
               private toastService: ToastService,
               private router: Router) 

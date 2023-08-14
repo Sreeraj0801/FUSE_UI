@@ -6,6 +6,7 @@ import {
 import { ToastService } from 'src/app/shared/services/NgToast/toast.service';
 import { RegisterService } from './register.service';
 import { FirebaseService } from 'src/app/shared/services/Firebase/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -31,7 +32,8 @@ export class RegisterPageComponent {
   constructor(
     private toastService: ToastService,
     private registerService: RegisterService,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private router:Router
   ) {}
 
   handleValidation(field: string) {
@@ -104,8 +106,8 @@ export class RegisterPageComponent {
     ) {
       this.registerService.userRegistration(this.details).subscribe(
         (value) => {
-          console.log(value);
-          this.toastService.showSuccess('all correct');
+          this.toastService.showSuccess('Verification Mail send successfully','verfiy your mail');
+          this.router.navigate(['/login']);
         },
         (err) => {
           console.log(err);
