@@ -70,3 +70,10 @@ workspace?:[];
 __v?:number ;
 _id:string ;
 }
+
+export interface userDetails{
+  _id:string;
+  email:string;
+  name:string;
+  accessToken:string;
+}

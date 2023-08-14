@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { RegisterDetailInterface, authResponse } from 'src/app/config/config.types';
 import { environmet } from 'src/environment/environment';
 import { catchError } from 'rxjs';
+import { RegisterPageComponent } from './register-page.component';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,21 +1,34 @@
+export enum GreetingTimes {
+  Morning = 'Good Morning',
+  Afternoon = 'Good Afternoon',
+  Evening = 'Good Evening',
+}
+
 import { Injectable } from '@angular/core';
+import { Observable, interval } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GreetingService {
-  getGreetingData(): { greeting: string; formattedDate: string } {
-    const date = new Date();
-    let greeting = '';
-    let formattedDate = '';
+  getGreetingData(): Observable<{ greeting: GreetingTimes; formattedDate: string }> {
+    return interval(1000).pipe(
+      map(() => this.calculateGreetingData())
+    );
+  }
 
+  private calculateGreetingData(): { greeting: GreetingTimes; formattedDate: string } {    
+    const date = new Date();
+    let greeting: GreetingTimes;
+    let formattedDate = '';    
     const hour = date.getHours();
     if (hour < 12) {
-      greeting = 'Good morning!';
+      greeting = GreetingTimes.Morning;
     } else if (hour < 16) {
-      greeting = 'Good afternoon!';
+      greeting = GreetingTimes.Afternoon;
     } else {
-      greeting = 'Good evening!';
+      greeting = GreetingTimes.Evening;
     }
 
     const options = { weekday: 'long', month: 'long', day: 'numeric' } as const;
