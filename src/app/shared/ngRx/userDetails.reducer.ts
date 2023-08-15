@@ -7,5 +7,14 @@ export const userDetailsReducer = createReducer(
     userDetailsState,
     on(addUserDetails, (state,{newData}) =>{
         return  newData ;
-    } )
+    } ),
+    on(removeUserDetails ,(state) => 
+    { 
+        state._id  =  '' , 
+        state.accessToken = '',
+        state.email = '',
+        state.name =''
+        return state;
+    }
+        ),
 )
