@@ -7,8 +7,12 @@ import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { userDetailsReducer } from './shared/ngRx/userDetails.reducer';
+import { localStorageSyncReducer, userDetailsReducer } from './shared/ngRx/userDetails.reducer';
 import { AuthenticationInterceptor } from './shared/services/Interceptor/authentication.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxColorsModule } from 'ngx-colors';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +20,17 @@ import { AuthenticationInterceptor } from './shared/services/Interceptor/authent
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    NgxColorsModule,
     ToastrModule.forRoot(),
-    StoreModule.forRoot({userDetails:userDetailsReducer}),
+    StoreModule.forRoot(
+      {userDetails:userDetailsReducer},
+      {metaReducers:[localStorageSyncReducer]}
+      ),
   ],
-  exports:[],
+  exports:[NgxColorsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: '', redirectTo: '/fuse', pathMatch: 'full' },
       {path:'workspace',
       loadChildren:() => import('../workspace-page/workspace-page.module').then(m => m.WorkspacePageModule),title:'FUSE | Workspace'},
+      {path:'project/create',loadChildren:()=> import('../new-project-page/new-project-page.module').then(m => m.NewProjectPageModule)},
       { path: '**', loadChildren:() => import('../page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
     ],
   },
