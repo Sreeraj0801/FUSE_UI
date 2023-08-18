@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-aside-navbar',
@@ -12,12 +14,15 @@ export class AsideNavbarComponent {
     { name: 'workspaces', link: '/workspace', icon: '🖥️' },
     // { name: 'messages', link: '/chat', icon: '🗪', margin: true },
   ];
-  constructor() {}
+  constructor(private _router: Router) {}
 
   toggleOpen() {
     this.open = !this.open;
   }
 
-  handleLogout() { }
+  handleLogout() { 
+    localStorage.clear();
+    this._router.navigate(['/login']);
+  }
 
 }

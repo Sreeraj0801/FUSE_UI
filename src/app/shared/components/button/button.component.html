@@ -1,5 +1,6 @@
 <button [type]="type"
     class="{{design}}"
-    (click)="handleBtnClick()">
+    (click)="handleBtnClick()"
+    [disabled]="isDisable">
     {{text}}
 </button>

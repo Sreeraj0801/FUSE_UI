@@ -11,7 +11,8 @@ export class ButtonComponent {
   @Input() design?: string;
   @Input() text?:string;
   @Input() type?:string;
-
+  @Input() isDisable?:boolean = false;
+  
   handleBtnClick() {
     this.btnClick.emit();
   }

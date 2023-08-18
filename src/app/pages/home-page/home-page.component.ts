@@ -23,7 +23,6 @@ export class HomePageComponent implements OnInit {
       this.greeting = data.greeting;
       this.formattedDate = data.formattedDate;
     });
-
     this.store.select(selectUserDetails).subscribe((userDetailsData) => {
       this.userDetails = userDetailsData;
     });
