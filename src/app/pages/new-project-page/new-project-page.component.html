@@ -15,36 +15,40 @@
         <form [formGroup]="newProjectGroup" (ngSubmit)="onFormSubmit()">
             <section id="addWorkspace" class=" px-10 flex   md:gap-5 gap-2 mb-4">
 
-    <select id="countries"
-        class="md:-ms-10 md:w-[32rem] cursor-grab   bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-        formControlName="workspaceName">
-        <option selected disabled 
-        class="dark:text-white text-slate-800">
-            Choose a Workspace
-        </option>
-        <option class="dark:text-white text-slate-800"
-        [value]="workspace._id"
-        *ngFor="let workspace of workspaces">
-        {{workspace.workspaceName}}
-        </option>
+                <select id="countries"
+                    class="md:-ms-10 md:w-[32rem] cursor-grab bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
+                    formControlName="workspaceName" (change)="handleWorkspaceSelection()">
+                    <option selected disabled class="dark:text-white text-slate-800">
+                        Choose a Workspace
+                    </option>
+                    <option class="dark:text-white text-slate-800" [value]="workspace._id"
+                        *ngFor="let workspace of workspaces">
+                        {{workspace.workspaceName}}
+                    </option>
+                </select>
 
-    </select>
 
                 <app-button
                     design="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                     text="Add Workspace" type="button" (btnClick)="handleModal()"></app-button>
+
             </section>
+            <div class="text-start text-red-600  "
+                *ngIf="newProjectGroup.get('workspaceName')?.hasError('required') && newProjectGroup.get('workspaceName')?.touched">
+                Workspace is mandatory
+            </div>
             <hr class='my-2 md:w-[42rem]'>
             <section id="addProject" class="mt-5 grid gap-5">
                 <div class="">
-                    <label for="email"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-start">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-start">
                         Project Name</label>
-                    <input 
-                        type="text" id="text"
+                    <input type="text" id="text"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light max-w-2xl"
-                        placeholder="eg : Demo Project" 
-                        formControlName="projectName">
+                        placeholder="eg : Demo Project" formControlName="projectName">
+                </div>
+                <div class="text-start text-red-600 h-2 -mt-5"
+                    *ngIf="newProjectGroup.get('projectName')?.hasError('required') && newProjectGroup.get('projectName')?.touched">
+                    Project Name is mandatory
                 </div>
                 <div class="">
                     <label for="Discription"
@@ -52,8 +56,11 @@
                         Discription </label>
                     <textarea type="text" id="text"
                         class="h-12 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light max-w-2xl"
-                        placeholder="eg : Project is about . . ."  
-                        formControlName="projectDiscription"></textarea>
+                        placeholder="eg : Project is about . . ." formControlName="projectDiscription"></textarea>
+                    <div class="text-start text-red-600 h-2 "
+                        *ngIf="newProjectGroup.get('projectDiscription')?.hasError('required') && newProjectGroup.get('projectDiscription')?.touched">
+                        Project Discription is mandatory
+                    </div>
                 </div>
                 <div class="flex  md:gap-[30%] gap-5 items-center ">
                     <div>
@@ -63,11 +70,14 @@
                         <div class="flex gap-5">
                             <input type="date" id="text"
                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light max-w-xl"
-                                placeholder="eg : Project is about . . ." 
-                                formControlName="fromDate">
+                                placeholder="eg : Project is about . . ." formControlName="fromDate">
                             <input type="date" id="text"
                                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light max-w-xl"
                                 placeholder="eg : Project is about . . ." formControlName="toDate">
+                        </div>
+                        <div class="text-start text-red-600 h-2 "
+                            *ngIf="newProjectGroup.get('fromDate')?.hasError('required') && newProjectGroup.get('fromDate')?.touched && newProjectGroup.get('toDate')?.hasError('required') && newProjectGroup.get('toDate')?.touched">
+                            Dates are mandatory
                         </div>
                     </div>
                     <div class="items-start flex flex-col">
@@ -91,41 +101,39 @@
                     </h1>
                     <app-button type="button"
                         design="mt-5 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                        text="Invite Members" (btnClick)="handleInviteModal()"
-                        ></app-button>
+                        text="Invite Members" (btnClick)="handleInviteModal()"></app-button>
                 </div>
 
-                <div class=" max-h-28 border  p-5 overflow-y-scroll grid md:grid-cols-3">
-                    <div class="flex items-center mb-4" *ngFor="let workspace of workspaces">
-                        <input id="default-checkbox" type="checkbox" value="{{workspace._id}}"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="default-checkbox"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 md:w-32 truncate">
-                            {{workspace.workspaceName}}
-                        </label>
+                <div class="border p-2">
+                    <div class="text-end">
+                        <app-button design="text-2xl bg-slate-500 rounded-full h-8 w-8 hover:bg-gray-300" text="🗘"
+                            type="button" (btnClick)="refreshMembers()">
+                        </app-button>
+                    </div>
+                    <div class=" max-h-40 grid md:grid-cols-3 gap-3 p-5 overflow-y-scroll ">
+                        <div class=" mb-4" *ngFor="let member of workspaceMembers">
+                            <app-member-card [member]="member"
+                                [isDisabled]="member.status === 'declined' || member.status === 'pending'"
+                                (selectedValue)="handleSelectedValue($event)"></app-member-card>
+                        </div>
                     </div>
                 </div>
             </section>
             <app-button
                 design="mt-5 text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                text="Submit" type="submit"
-                ></app-button>
+                [text]="buttonText" type= "submit"></app-button>
         </form>
     </div>
 </div>
 
 <!--Workspace creation Modal -->
 <app-modal [heading]="modalHeading" [(isOpen)]="showModal">
-    <app-create-workspace
-    [(modalDiaplay)]="showModal"
-    (notify)="getAllWorkspace()">
+    <app-create-workspace [(modalDiaplay)]="showModal" (notify)="getAllWorkspace()">
     </app-create-workspace>
 </app-modal>
 
-
+<!--Invite Members Modal -->
 <app-modal heading="Invite Members" [(isOpen)]="inviteMembersModal">
-    <app-invite-members 
-        [(modal)] = "inviteMembersModal"
-        [workspaceId] = "newProjectGroup.get('workspaceName')?.value">
+    <app-invite-members [(modal)]="inviteMembersModal" [workspaceId]="newProjectGroup.get('workspaceName')?.value">
     </app-invite-members>
 </app-modal>

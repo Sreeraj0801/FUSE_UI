@@ -16,6 +16,7 @@ import { ModalComponent } from './modal/modal.component';
 import { BadgesComponent } from './badges/badges.component';
 import { InviteMembersComponent } from './invite-members/invite-members.component';
 import { CreateWorkspaceComponent } from './create-workspace/create-workspace.component';
+import { MemberCardComponent } from './member-card/member-card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CreateWorkspaceComponent } from './create-workspace/create-workspace.co
     BadgesComponent,
     InviteMembersComponent,
     CreateWorkspaceComponent,
+    MemberCardComponent,
   ],
   exports: [
     LogoComponent,
@@ -43,6 +45,7 @@ import { CreateWorkspaceComponent } from './create-workspace/create-workspace.co
     BadgesComponent,
     InviteMembersComponent,
     CreateWorkspaceComponent,
+    MemberCardComponent,
   ],
   imports: [CommonModule, RouterModule,FormsModule,NgxColorsModule,  ],
 })
