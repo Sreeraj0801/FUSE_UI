@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewProjectService } from './new-project.service';
 import { NgxColorsModule } from 'ngx-colors';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 const route:Routes = [{path:'',component:NewProjectPageComponent,title:'FUSE | New Project'}]
 
 @NgModule({
@@ -13,6 +14,8 @@ const route:Routes = [{path:'',component:NewProjectPageComponent,title:'FUSE | N
     CommonModule,
     ComponentsModule,
     NgxColorsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(route)
   ],providers:[NewProjectService]
 })

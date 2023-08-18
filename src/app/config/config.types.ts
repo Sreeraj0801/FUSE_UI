@@ -1,4 +1,3 @@
-
 export interface LoginInterface {
   credential: string;
   pword: string;
@@ -38,42 +37,58 @@ export interface authResponse {
 }
 
 export interface LoginDetailsInterface {
-  credential:string, 
-  pword:string
+  credential: string;
+  pword: string;
 }
 export interface LoginErrorInterface {
-  credentialError:string,
-  pwordError:string,
+  credentialError: string;
+  pwordError: string;
 }
 //Login Response Interface
 export interface LoginResInterface {
-  accessToken?:string; 
-  response:{ 
-      email: string;
-      isActive?: boolean;
-      isVerified?:boolean;
-      name:string ;
-      mobile?:string;
-      workspace?:[];
-      __v?:number ;
-      _id:string ;
-      };
+  accessToken?: string;
+  response: {
+    email: string;
+    isActive?: boolean;
+    isVerified?: boolean;
+    name: string;
+    mobile?: string;
+    workspace?: [];
+    __v?: number;
+    _id: string;
+  };
 }
 
-export interface ResponseInterface { 
-email: string;
-isActive?: boolean;
-isVerified?:boolean;
-name:string ;
-mobile?:string;
-workspace?:[];
-__v?:number ;
-_id:string ;
+export interface ResponseInterface {
+  email: string;
+  isActive?: boolean;
+  isVerified?: boolean;
+  name: string;
+  mobile?: string;
+  workspace?: [];
+  __v?: number;
+  _id: string;
 }
 
-export interface userDetails{
-  _id:string;
-  email:string;
-  name:string;
-  accessToken:string;
+export interface userDetails {
+  _id: string;
+  email: string;
+  name: string;
+  accessToken: string;
+}
+
+export interface workspaceRequest {
+  color: string ;
+  workspaceName: string;
+  masterId: string;
+}
+
+export interface WorkspaceInterface {
+  color: string;
+  masterId: string;
+  workspaceName: string;
+  members: [];
+  projects: [];
+  __v: number;
+  _id: string;
 }
