@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NewProjectService } from './new-project.service';
-import { WorkspaceInterface, userDetails, workspaceRequest } from 'src/app/config/config.types';
+import { WorkspaceInterface, WorkspceMembers, userDetails, workspaceRequest } from 'src/app/config/config.types';
 import { ToastService } from 'src/app/shared/services/NgToast/toast.service';
 import { getuserDetails, isEmail } from 'src/app/config/config.function';
 import { FormGroup } from '@angular/forms';
 import { ReactiveFormService } from 'src/app/shared/services/ReactiveForm/reactive-form.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-project-page',
@@ -16,6 +17,7 @@ export class NewProjectPageComponent implements OnDestroy, OnInit {
   showModal: boolean = false;
   modalHeading: string = 'Create Workspace';
   userDetails?: userDetails;
+  buttonText:string = "Submit";
   workspaces?:WorkspaceInterface[];
     workspaceDetails: workspaceRequest = 
   {
@@ -23,6 +25,7 @@ export class NewProjectPageComponent implements OnDestroy, OnInit {
       workspaceName: '',
       masterId: '',
     };
+    workspaceMembers:WorkspceMembers[];
 
   // for adding Members to workspace
   inviteMembersModal:boolean = false;
@@ -34,8 +37,10 @@ export class NewProjectPageComponent implements OnDestroy, OnInit {
     private _projectService: NewProjectService,
     private _toast: ToastService,
     private _fromService:ReactiveFormService,
+    private  _router:Router,
   ) {
     this.newProjectGroup = this. _fromService.createNewProjectForm();
+    
   }
 
  ngOnInit(): void {
@@ -44,6 +49,17 @@ export class NewProjectPageComponent implements OnDestroy, OnInit {
   }
 
   onFormSubmit() {
+    if(this.newProjectGroup.valid){
+      this.buttonText = 'Loading . . .'
+      this._projectService.createProject(this.newProjectGroup.value).subscribe(response => {
+        this.buttonText='Submit';
+        this._toast.showSuccess(response as string);
+        this._router.navigate(['/home'])
+      },err => 
+        {console.log(err)
+        this.buttonText='Submit';}
+      )
+    }else{this._toast.showError("Please fill out the form")}
     console.log(this.newProjectGroup.valid,this.newProjectGroup.value);
   }
 
@@ -78,8 +94,45 @@ handleInviteModal(){
   }this.inviteMembersModal = true;}
 
 
+  refreshMembers(){
+    const workspaceId:string = this.newProjectGroup.get('workspaceName')?.value;
+    if(workspaceId){
+      this.getWorkspaceMembers();
+    }else{
+      this._toast.showError("Select a workspace") 
+    }
+  }
+
+  getWorkspaceMembers(){
+    const workspaceId:string = this.newProjectGroup.get('workspaceName')?.value;
+    if(workspaceId){
+      this._projectService.getWorkspaceMembers(workspaceId).subscribe(respone => {
+        this.workspaceMembers = respone;
+      },err => console.error(err))
+    }else{
+      this._toast.showError("Select a workspace")
+    }
+  }
+
+  handleWorkspaceSelection(){
+    this.getWorkspaceMembers();
+  }
+
+  handleSelectedValue(email: string) {
+    const membersControl = this.newProjectGroup.get('members');
+    if (membersControl) {
+      const currentMembers = membersControl.value as string[];
+      if (currentMembers.includes(email)) {
+        this._fromService.removeMember(this.newProjectGroup, email);
+      } else {
+        this._fromService.addMember(this.newProjectGroup, email);
+      }
+    }    
+  }
+  
 //--------Completed the Invitation Modal----------------------------------------------- 
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
   }
 }
+

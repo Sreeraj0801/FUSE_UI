@@ -92,3 +92,20 @@ export interface WorkspaceInterface {
   __v: number;
   _id: string;
 }
+
+
+export interface WorkspceMembers {
+  email:string,
+  status:string
+}
+
+export interface CreateProjectForm {
+  projectName: string;
+  workspaceName: string;
+  masterId: string;
+  projectDiscription: string;
+  projectTheme: string;
+  fromDate: string;
+  toDate: string;
+  members: string|null[];
+}
