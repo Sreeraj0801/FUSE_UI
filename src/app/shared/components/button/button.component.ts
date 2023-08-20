@@ -16,4 +16,5 @@ export class ButtonComponent {
   handleBtnClick() {
     this.btnClick.emit();
   }
+  
 }

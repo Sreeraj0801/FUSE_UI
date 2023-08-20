@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
   LoginErrorInterface,
-  LoginDetailsInterface,
+  LoginInterface,
   userDetails,
 } from 'src/app/config/config.types';
 import { LoginPageService } from './login-page.service';
@@ -29,7 +29,7 @@ export class LoginPageComponent {
     private store: Store
   ) {}
 
-  details: LoginDetailsInterface = {
+  details: LoginInterface = {
     credential: '',
     pword: '',
   };
