@@ -17,6 +17,12 @@ import { BadgesComponent } from './badges/badges.component';
 import { InviteMembersComponent } from './invite-members/invite-members.component';
 import { CreateWorkspaceComponent } from './create-workspace/create-workspace.component';
 import { MemberCardComponent } from './member-card/member-card.component';
+import { SelectWorkspaceComponent } from './select-workspace/select-workspace.component';
+import { RadioCardComponent } from './radio-card/radio-card.component';
+import { AccordianComponent } from './accordian/accordian.component';
+import { AccordianButtonComponent } from './accordian-button/accordian-button.component';
+import { MinCardComponent } from './min-card/min-card.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +38,12 @@ import { MemberCardComponent } from './member-card/member-card.component';
     InviteMembersComponent,
     CreateWorkspaceComponent,
     MemberCardComponent,
+    SelectWorkspaceComponent,
+    RadioCardComponent,
+    AccordianComponent,
+    AccordianButtonComponent,
+    MinCardComponent,
+    CardComponent,
   ],
   exports: [
     LogoComponent,
@@ -46,6 +58,11 @@ import { MemberCardComponent } from './member-card/member-card.component';
     InviteMembersComponent,
     CreateWorkspaceComponent,
     MemberCardComponent,
+    RadioCardComponent,
+    AccordianComponent,
+    AccordianButtonComponent,
+    MinCardComponent,
+    CardComponent,
   ],
   imports: [CommonModule, RouterModule,FormsModule,NgxColorsModule,  ],
 })

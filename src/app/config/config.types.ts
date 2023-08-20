@@ -36,14 +36,6 @@ export interface authResponse {
   };
 }
 
-export interface LoginDetailsInterface {
-  credential: string;
-  pword: string;
-}
-export interface LoginErrorInterface {
-  credentialError: string;
-  pwordError: string;
-}
 //Login Response Interface
 export interface LoginResInterface {
   accessToken?: string;
@@ -77,8 +69,19 @@ export interface userDetails {
   accessToken: string;
 }
 
+export interface CreateProjectForm {
+  projectName: string;
+  workspaceName: string;
+  masterId: string;
+  projectDiscription: string;
+  projectTheme: string;
+  fromDate: string;
+  toDate: string;
+  members: string | null[];
+}
+
 export interface workspaceRequest {
-  color: string ;
+  color: string;
   workspaceName: string;
   masterId: string;
 }
@@ -93,19 +96,33 @@ export interface WorkspaceInterface {
   _id: string;
 }
 
-
 export interface WorkspceMembers {
-  email:string,
-  status:string
+  email: string;
+  status: string;
 }
 
-export interface CreateProjectForm {
-  projectName: string;
-  workspaceName: string;
-  masterId: string;
-  projectDiscription: string;
-  projectTheme: string;
+export interface workspaceResponse {
+  ownedWorkspaces: WorkspaceInterface[];
+  sharedWorkspaces: WorkspaceInterface[];
+}
+
+export interface RadioCardComponentEMitter{
+  id:string,
+  name:string,
+  owner:boolean
+}
+
+export interface ProjectData {
   fromDate: string;
+  masterId: string;
+  members: string[];
+  pending: boolean;
+  projectDescription: string;
+  projectName: string;
+  projectTheme: string;
+  status: boolean;
   toDate: string;
-  members: string|null[];
+  workspaceName: string;
+  __v: number;
+  _id: string;
 }
