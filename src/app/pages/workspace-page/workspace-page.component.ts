@@ -11,6 +11,7 @@ import {
 } from 'src/app/config/config.types';
 import { getuserDetails } from 'src/app/config/config.function';
 import { ToastService } from 'src/app/shared/services/NgToast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workspace-page',
@@ -34,7 +35,8 @@ export class WorkspacePageComponent implements OnInit, OnDestroy {
 
 
   constructor(private workspaceService: WorspacePageService,
-              private _toast:ToastService) {}
+              private _toast:ToastService,
+              private router:Router) {}
 
   ngOnInit(): void {
     this.getAllWorkspace();
@@ -90,9 +92,9 @@ export class WorkspacePageComponent implements OnInit, OnDestroy {
         this.httpSubscription.push(MembersSubscription);
       }
 
-      handleProjectSelection(id:string){
-        console.log(id);
-        
+      handleProjectSelection(id:string,category:boolean){
+        console.log(id,category);
+        this.router.navigate([`/project/${id}/${category}`]);
       }
   ngOnDestroy(): void {
     this.unsubscribeAll();

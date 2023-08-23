@@ -1,0 +1,21 @@
+<button (click)="handleClick()">
+  <div
+    class=" p-2  w-72  flex justify-between h-16 overflow-y-auto bg-white   
+   {{ task.status === 'completed' ? 'border-green-400 border': task.status === 'pending' ? 'border-red-600 border': 'border-gray-200 dark:border-gray-700 border-2'}}
+   rounded shadow hover:bg-gray-300 dark:bg-gray-900  dark:hover:bg-gray-700 dark:scrollbar-thumb-gray-600 scrollbar-thumb-gray-400  scrollbar-thin">
+    <h5 class="dark:text-slate-400 text-start">{{task.name}}</h5>
+    <p class="{{task.priority === 'High'? 
+  'text-red-500': task.priority === 'Medium'?
+  'text-yellow-500': 'dark:text-gray-300 text-slate-700'}}
+  font-semibold text-sm">
+      {{task.priority}} 🚩
+    </p>
+  </div>
+</button>
+
+
+<app-modal heading="Task Details" [(isOpen)]="showModal">
+  <app-task-details
+  [task]="task"
+  (statusChange)="handleStatusChange()"></app-task-details>
+</app-modal>

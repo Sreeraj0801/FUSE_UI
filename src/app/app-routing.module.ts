@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { AuthGuardService } from './shared/guards/auth-guard.service';
+import { IsLoggedInService } from './shared/guards/is-logged-in.service';
 
 const routes: Routes = [
   {path:'fuse' ,     loadChildren:() => import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule), title:'FUSE | Project Management plaform' ,},
@@ -13,6 +15,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

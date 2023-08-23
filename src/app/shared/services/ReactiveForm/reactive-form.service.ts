@@ -40,4 +40,17 @@ export class ReactiveFormService {
     }
   }
 
+  createNewTask():FormGroup{
+    return this.formBuilder.group({
+      name:['',Validators.required],
+      priority:['Low',Validators.required],
+      reporter:[this.userDetails._id,Validators.required],
+      discription:['',Validators.required],
+      from:['',Validators.required],
+      to:['',Validators.required],
+      projectId:['',Validators.required], 
+      members: this.formBuilder.array([]), 
+    })
+  }
+
 }

@@ -117,7 +117,7 @@ export interface ProjectData {
   masterId: string;
   members: string[];
   pending: boolean;
-  projectDescription: string;
+  projectDiscription: string;
   projectName: string;
   projectTheme: string;
   status: boolean;
@@ -125,4 +125,54 @@ export interface ProjectData {
   workspaceName: string;
   __v: number;
   _id: string;
+}
+
+export interface Comment {
+  reporterId: string;
+  reporterName: string;
+  comment: string;
+  time: string;
+}
+
+export interface TaskDetails {
+  assignee: string[];
+  assigneeDetails: any[]; 
+  comments: Comment[];
+  discription: string;
+  from: string;
+  images: string[];
+  name: string;
+  priority: string;
+  projectId: string;
+  reporter: string;
+  status: string;
+  to: string;
+  __v: number;
+  _id: string;
+}
+
+
+// models.ts
+
+export interface Member {
+  email: string;
+  mobile: string;
+  name: string;
+  _id: string;
+}
+
+export interface projectMembers {
+  members: Member[];
+  registerdMembers: Member[];
+}
+
+interface Task {
+  name: string;
+  priority: string;
+  description: string;
+  from: string;
+  to: string;
+  assignee: string[];
+  reporter: string; 
+  projectId: string;
 }

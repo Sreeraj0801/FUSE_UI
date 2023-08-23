@@ -106,15 +106,18 @@
 
                 <div class="border p-2">
                     <div class="text-end">
-                        <app-button design="text-2xl bg-slate-500 rounded-full h-8 w-8 hover:bg-gray-300" text="🗘"
+                        <app-button design="text-2xl bg-slate-500 rounded-full h-8 w-8 hover:bg-gray-300" 
+                            text="🗘"
                             type="button" (btnClick)="refreshMembers()">
                         </app-button>
                     </div>
                     <div class=" max-h-40 grid md:grid-cols-3 gap-3 p-5 overflow-y-scroll ">
                         <div class=" mb-4" *ngFor="let member of workspaceMembers">
-                            <app-member-card [member]="member"
+                            <app-member-card 
+                                [member]="member"
                                 [isDisabled]="member.status === 'declined' || member.status === 'pending'"
-                                (selectedValue)="handleSelectedValue($event)"></app-member-card>
+                                (selectedValue)="handleSelectedValue($event)">
+                            </app-member-card>
                         </div>
                     </div>
                 </div>
