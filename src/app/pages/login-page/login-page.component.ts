@@ -101,7 +101,6 @@ export class LoginPageComponent {
         this.loginService.googleLogin(userDetail.user.email).subscribe(
           (response) => {
             this.toastService.showSuccess('User succesfully Logged In');
-            console.log(response);
           },
           (err) => {
             this.toastService.showError(
