@@ -1,0 +1,14 @@
+<ul
+    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 ">
+    <li class="mr-2">
+        <button class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-500 dark:hover:text-gray-300 
+        {{selectedTab =='overview'?'dark:bg-slate-500 bg-slate-400 text-white':'' }}"
+            (click)="handleTabSelection('overview')">Overview</button>
+    </li>
+    <li class="mr-2">
+        <button class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-500 dark:hover:text-gray-300 
+        {{selectedTab =='task'?'dark:bg-slate-500 bg-slate-400 text-white':'' }}"
+            (click)="handleTabSelection('task')">Task</button>
+    </li>
+
+</ul>

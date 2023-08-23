@@ -1,0 +1,91 @@
+<div class="relative p-6 flex-auto">
+<form [formGroup]="newTaskGroup" (ngSubmit)="onSubmit()">
+  <div class="grid gap-4">
+    <section class="grid grid-cols-2 gap-3">
+      <div>
+        <label for="helper-text" class="block text-sm font-medium text-gray-900 dark:text-white">
+          Task Name
+        </label>
+        <input type="text" id="helper-text" name="name" 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50" placeholder="Eg: Complete wireframe"
+        formControlName="name"/>
+      </div>
+      <div>
+        <label for="helper-text" class="block text-sm font-medium text-gray-900 dark:text-white">
+          Priority 🚩
+        </label>
+        <select 
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm round focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="priority">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+      </div>
+    </section>
+    <div>
+      <label for="helper-text" class="block text-sm font-medium text-gray-900 dark:text-white">
+        Task Description
+      </label>
+      <textarea  name="discription" 
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50" placeholder="eg : Complete the wireframe with figma"
+      formControlName="discription"></textarea>
+    </div>
+    <section class="grid grid-cols-2 gap-3">
+      <div class="fromDate">
+        <label for="helper-text" class="block text-sm font-medium text-gray-900 dark:text-white">
+          From
+        </label>
+        <input type="date" id="helper-text" name="from" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50" 
+        formControlName="from"/>
+      </div>
+     
+      <div class="fromDate">
+        <label for="helper-text" class="block text-sm font-medium text-gray-900 dark:text-white">
+          To
+        </label>
+        <input type="date" id="helper-text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-50" 
+        name="to"  formControlName="to"/>
+      </div>
+    </section>
+  </div>
+  
+  <div>
+    <section>
+      <p class="block text-lg font-bold text-gray-900 dark:text-white">
+        Assign Task to Members
+      </p>
+      <p class="block text-sm font-medium text-gray-400 dark:text-gray-300 text-end">
+        *can only assign to registered members
+      </p>
+      <div class="max-h-40 overflow-y-scroll">
+          <div *ngIf="members ; else noMembers">
+              <div *ngFor="let member of members">
+                <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                  <input id="bordered-checkbox-1" 
+                  type="checkbox" 
+                  value="" 
+                  (change)="handleMemberChange(member.email)"
+                  class="w-8 h-8 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                  />
+                  <label class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    sreeraj
+                    <br />
+                    <span class="dark:text-slate-400 text-slate-600">{{member.name}}</span>
+                  </label>
+                </div>
+              </div>
+          </div>
+          <ng-template #noMembers>
+            <p class="dark:text-slate-300 text-slate-500 font-bold text-lg">No members are availabe</p>
+          </ng-template>
+      </div>
+    </section>
+  </div >
+  <app-button 
+  text="submit" 
+  design="bg-red-300 p-2 px-5 rounded mt-5"
+  type="submit"/>
+
+</form>
+  </div>

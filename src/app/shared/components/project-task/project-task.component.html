@@ -1,0 +1,8 @@
+<div class="grid md:grid-cols-3 gap-4 px-5 h-[70vh] mb-24  overflow-scroll">
+    <app-task-main-card Heading="Task ({{ongoingTask.length?ongoingTask.length : 0}})" [Tasks]="ongoingTask"
+        (taskEmiter)="handleTaskEmiter()"></app-task-main-card>
+    <app-task-main-card Heading="Completed ({{completedTask.length?completedTask.length : 0}})" [Tasks]="completedTask"
+        (taskEmiter)="handleTaskEmiter()"></app-task-main-card>
+    <app-task-main-card  Heading="Pending  ({{pendingTask.length? pendingTask.length: 0}})" [Tasks]="pendingTask"
+        (taskEmiter)="handleTaskEmiter()"></app-task-main-card>
+</div>

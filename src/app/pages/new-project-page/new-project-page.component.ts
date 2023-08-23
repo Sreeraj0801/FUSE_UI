@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-project-page.component.css'],
 })
 export class NewProjectPageComponent implements OnDestroy, OnInit {
-  
   showModal: boolean = false;
   modalHeading: string = 'Create Workspace';
   userDetails?: userDetails;
@@ -39,8 +38,7 @@ export class NewProjectPageComponent implements OnDestroy, OnInit {
     private _fromService:ReactiveFormService,
     private  _router:Router,
   ) {
-    this.newProjectGroup = this. _fromService.createNewProjectForm();
-    
+    this.newProjectGroup = this. _fromService.createNewProjectForm();    
   }
 
  ngOnInit(): void {

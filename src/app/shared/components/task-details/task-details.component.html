@@ -1,0 +1,67 @@
+<hr>
+<div *ngIf="task" class="mt-2">
+    <div class="md:text-2xl  text-xl font-bold flex justify-between dark:text-gray-200 text-gray-600">
+        <p>{{task.name}}</p>
+        <p>{{task.priority}} 🚩</p>
+        <app-button text="Delete task" 
+        design="text-sm text-white bg-red-600 px-5 py-2 hover:rounded hover:bg-red-700"
+        (btnClick)="handleTaskDelete()"></app-button>
+    </div>
+    <hr class="my-4">
+    <div class="md:flex">
+        <div class="md:w-[60%] md:border-r-2 grid gap-3">
+            <div class="md:text-2xl  text-xl font-bold dark:text-gray-400 text-gray-500">
+             <h2>📑 Discription </h2>
+             <p class="md:text-lg text-md dark:text-gray-300 text-gray-400 font-normal">{{task.discription}}</p>
+            </div>
+            <div class="md:text-2xl  text-xl font-bold dark:text-gray-400 text-gray-500">
+             <div class="flex justify-between">
+                <h2>💬 Comments </h2> 
+                <button class="rounded bg-gray-500 text-white text-2xl text-bold px-5" (click)="commentHieght()"> {{commentHeight ? '-':'+'}}</button>
+             </div>
+             <ul class="{{commentHeight?'h-36 overflow-y-scroll ':'h-14 overflow-hidden'}} delay-75">
+                 <div  *ngFor="let comment of task.comments">
+                 <li class="text-sm font-normal dark:text-slate-300 text-slate-600  px-5  border-b mt-5 ">
+                        <div class="flex justify-between w-full">
+                            <p class="font-bold">{{comment.reporterName}}</p>
+                            <p>{{ comment.time| relativeTime  }}</p>
+                        </div>
+                        <p class="text-lg -mt-1" [innerHTML]="comment.comment"></p>
+                    </li>
+                </div>
+                </ul>
+            </div>
+            <div class="">
+                <app-task-comment [text]="commentText" (dataSent)="receiveData($event)"></app-task-comment>
+            </div>
+         </div>
+         <div class="md:w-[40%] md:ps-3">
+            <div class="md:text-xl  text-lg font-bold dark:text-gray-400 text-gray-500">
+                <h2>📅 Date </h2>
+               <div class="mflex justify-between">
+                <p class="md:text-lg text-md dark:text-gray-300 text-gray-400 font-normal">{{task.from}}</p>
+                <p>to</p>
+                <p class="md:text-lg text-md dark:text-gray-300 text-gray-400 font-normal">{{task.to}}</p>
+               </div>
+            </div>
+            <div>
+                <section class="">
+                            <div class="flex gap-4 my-5">
+                                <h1 class="text-xl  dark:text-slate-400 text-slate-600 ">Status : </h1>
+                                <h1 class="text-xl font-bold dark:text-white text-black">{{task.status}}</h1>
+                            </div>
+                    <select
+                    id="countries"
+                    class=" bg-gray-50 border w-full font-bold border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    (change)="handleStatusChange($event)"
+                    >
+                      <option selected>{{task.status}}</option>
+                      <option value="pending" class="{{task.status === 'pending'?'hidden':'block'}}">pending</option>
+                      <option value="completed" class="{{task.status === 'completed'?'hidden':'block'}}">completed</option>
+                      <option value="ongoing" class="{{task.status === 'ongoing'?'hidden':'block'}}">ongoing</option>
+                  </select>
+                </section>
+            </div>
+         </div>
+    </div>
+</div>

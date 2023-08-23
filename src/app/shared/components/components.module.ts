@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgxColorsModule } from 'ngx-colors';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { LogoComponent } from './logo/logo.component';
 import { ButtonComponent } from './button/button.component';
@@ -23,6 +23,17 @@ import { AccordianComponent } from './accordian/accordian.component';
 import { AccordianButtonComponent } from './accordian-button/accordian-button.component';
 import { MinCardComponent } from './min-card/min-card.component';
 import { CardComponent } from './card/card.component';
+import { ProjectTabComponent } from './project-tab/project-tab.component';
+import { CircleProgressComponent } from './circle-progress/circle-progress.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ProjectOverviewComponent } from './project-overview/project-overview.component';
+import { ProjectTaskComponent } from './project-task/project-task.component';
+import { TaskMainCardComponent } from './task-main-card/task-main-card.component';
+import { TaskMiniCardComponent } from './task-mini-card/task-mini-card.component';
+import { NewTaskComponent } from './new-task/new-task.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+import { RelativeTimePipe } from '../pipes/relative-time.pipe';
+import { TaskCommentComponent } from './task-comment/task-comment.component'
 
 @NgModule({
   declarations: [
@@ -44,6 +55,16 @@ import { CardComponent } from './card/card.component';
     AccordianButtonComponent,
     MinCardComponent,
     CardComponent,
+    ProjectTabComponent,
+    CircleProgressComponent,
+    ProjectOverviewComponent,
+    ProjectTaskComponent,
+    TaskMainCardComponent,
+    TaskMiniCardComponent,
+    NewTaskComponent,
+    TaskDetailsComponent,
+    RelativeTimePipe,
+    TaskCommentComponent,
   ],
   exports: [
     LogoComponent,
@@ -63,7 +84,33 @@ import { CardComponent } from './card/card.component';
     AccordianButtonComponent,
     MinCardComponent,
     CardComponent,
+    ProjectTabComponent,
+    CircleProgressComponent,
+    ProjectOverviewComponent,
+    ProjectTaskComponent,
+    TaskMainCardComponent,
+    TaskMiniCardComponent,
+    NewTaskComponent,
+    TaskDetailsComponent,
+    TaskCommentComponent,
   ],
-  imports: [CommonModule, RouterModule,FormsModule,NgxColorsModule,  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxColorsModule,
+    HttpClientModule,
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 16,
+      animateTitle: true,
+      maxPercent: 100,
+      innerStrokeWidth: 8,
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
+      animationDuration: 300,
+    }),
+  ],
 })
 export class ComponentsModule {}

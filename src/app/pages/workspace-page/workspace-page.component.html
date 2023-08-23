@@ -56,13 +56,18 @@
         <div class="mt-5">
           <app-card>
             <h1
-              class="mb-4 text-lg font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl  dark:text-white">
+              class="text-lg font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl  dark:text-white">
               List of projects</h1>
+              <h1
+              class=" -mt-1 mb-4 text-sm font-light  text-gray-900   dark:text-white">
+              *Select a project for details
+          </h1>
             <div class="grid gap-3 p-2 " *ngIf="workspaceDetail.length; else noProject">
               <ul class=" grid gap-3" *ngFor="let project of workspaceDetail">
                 <li
                   class="cursor-pointer text-lg dark:text-gray-400 text-gray-700 font-bold border hover:bg-slate-600 border-1 dark:border-slate-700 border-slate-300 p-2 rounded"
-                  (click)="handleProjectSelection(project._id)">
+                  (click)="handleProjectSelection(project._id,selectedValue.owner)">
+                  <span class="rounded bg-blue-300 text-white h-10 w-10 p-1"> {{project.projectName[0]}}</span>
                   {{project.projectName}}
                 </li>
               </ul>
@@ -79,7 +84,7 @@
             <h1
               class="mb-4 text-lg font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl  dark:text-white">
               Team Members</h1>
-            <div class="grid gap-3 p-2 " *ngIf="wrokspaceMembers.length; else noProject">
+            <div class="grid gap-3 p-2 " *ngIf="wrokspaceMembers.length; else noMembers">
               <ul class=" grid gap-3" *ngFor="let members of wrokspaceMembers">
                 <li
                   class="cursor-pointer text-lg dark:text-gray-400 text-gray-700 font-bold border hover:bg-slate-600 border-1 dark:border-slate-700 border-slate-300 p-2 rounded">
@@ -90,8 +95,8 @@
                 </li>
               </ul>
             </div>
-            <ng-template #noProject>
-              <h1 class="mb-4 text-lg font-bold  text-gray-600   dark:text-gray-600">No projects available</h1>
+            <ng-template #noMembers>
+              <h1 class="mb-4 text-lg font-bold  text-gray-600   dark:text-gray-600">No Team Members available</h1>
             </ng-template>
           </app-card>
         </div>

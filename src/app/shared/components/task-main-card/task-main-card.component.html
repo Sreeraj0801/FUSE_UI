@@ -1,0 +1,15 @@
+<div>
+  <div
+    class=" p-6 bg-zinc-200 border border-gray-50  rounded-lg shadow-md shadow-gray-100 dark:shadow-gray-900 dark:bg-gray-800 dark:border-gray-700 h-max-96   scrollbar-thumb-gray-900  scrollbar-thin ">
+    <h1 class="text-gray-700 dark:text-gray-300 text-2xl text-center font-extrabold m-2 sticky ">
+      {{Heading}}
+    </h1>
+    <div *ngIf="Tasks" class="grid gap-3">
+      <div  *ngFor="let tasks of Tasks">
+        <app-task-mini-card [task]="tasks"
+        (taskChange)="handleTaskChange()"></app-task-mini-card>
+      </div>
+    </div>
+  </div>
+</div>
+

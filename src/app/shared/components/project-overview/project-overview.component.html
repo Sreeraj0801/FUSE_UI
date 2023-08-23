@@ -1,0 +1,32 @@
+<div class="px-10 md:flex grid gap-5 mt-5 md:mt-0">
+    <div class="w-full h-[65vh] border rounded p-5 dark:bg-slate-700 bg-slate-300 dark:border-slate-200 border-slate-400">
+        <div class="h-full flex items-center justify-center">
+            <app-circle-progress [percentage]="progress">
+            </app-circle-progress>
+        </div>
+    </div>
+    <div class="w-full " *ngIf="details">
+        <div
+            class="w-full md:h-[40%] md:mb-10 mb-5 border rounded p-5 dark:bg-slate-700 bg-slate-300 flex items-center justify-start px-5 dark:border-slate-200 border-slate-400">
+            <div>
+                <h1 class="text-2xl dark:text-slate-100 font-extrabold">{{details.projectName}}</h1>
+                <p class="text-lg dark:text-slate-400 text-gray-500 font-bold">{{details.projectDiscription}}</p>
+                <div class="flex  text-md font-bold gap-3 dark:text-slate-300 text-gray-600">
+                    <p>{{details.fromDate}} </p>
+                    <p>to</p>
+                    <p>{{details.toDate}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-full md:h-[50%] border rounded p-5 dark:bg-slate-700 bg-slate-300 mb-24 px-5 overflow-y-scroll dark:border-slate-200 border-slate-400">
+            <div class="" *ngIf="details.members">
+                <h1 class="text-2xl dark:text-slate-100 font-extrabold text-start">Project Members</h1>
+                <div *ngFor="let member of details.members">
+                    <app-radio-card
+                    [name]="member"></app-radio-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
